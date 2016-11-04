@@ -32,21 +32,36 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         let c = GMSCameraPosition.camera(withLatitude:19.0760, longitude:73.1777, zoom:10)
-//        map_View = GMSMapView.map(withFrame:.zero , camera: c)
         map_View = GMSMapView.map(withFrame: CGRect(x:0,y:0,width:self.view.bounds.width,height:self.view.bounds.height - 150), camera:c)
         back?.addSubview(map_View!)
         map_View?.isMyLocationEnabled = true
-//        map_View?.settings.myLocationButton = true
+        map_View?.settings.myLocationButton = true
         map_View?.delegate = self
       
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 //    
 //    var map_View: GMSMapView = {
 //        let view = GMSMapView()
 //        view.translatesAutoresizingMaskIntoConstraints = false
 //        return view
 //    }()
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        var visibleRect = CGRect()
+        
+        visibleRect.origin = collectionView.contentOffset
+        visibleRect.size = collectionView.bounds.size
+        
+        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+        
+        let visibleIndexPath: IndexPath = collectionView.indexPathForItem(at: visiblePoint)!
+        
+        print(visibleIndexPath)
+    }
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
@@ -65,7 +80,6 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         cell.bhk?.text = data.locality
         cell.property_Image?.image = UIImage(named:data.image)
         cell.layer.cornerRadius = 3.0
-//        cell.layer.masksToBounds = true
         let shadowPath = UIBezierPath(rect: cell.bounds)
         cell.layer.masksToBounds = false
         cell.layer.shadowColor = UIColor.lightGray.cgColor
@@ -84,18 +98,32 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         map_View?.animate(with: zoomCamera)
     }
     
+    var onceOnly = false
+    internal func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if !onceOnly {
+            //set the row and section you need.
+            let indexToScrollTo = IndexPath(row: 1, section: indexPath.section)
+            self.collectionView.scrollToItem(at: indexToScrollTo, at: .left, animated: false)
+            onceOnly = true
+        }
+    }
+    
+    
+    
     
         func setupCollectionView(){
         let layout = UICollectionViewFlowLayout()
-//        layout.minimumLineSpacing = 8.0
-//        layout.minimumInteritemSpacing = 8.0
-//        self.collectionView!.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleWidth]
-//        self.collectionView!.alwaysBounceVertical = true
-//        self.collectionView!.collectionViewLayout = layout
         layout.scrollDirection = .vertical
         
     }
     
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        print("didTap")
+//        let visibleIndexPath: IndexPath = collectionView.indexPath(for: Property_Cell.self)
+        self.collectionView.reloadData()
+        self.collectionView.setContentOffset(CGPoint(x: 0, y: -self.collectionView.contentInset.top), animated:true)
+        return true
+    }
     func readJSON(){
         if let path : String = Bundle.main.path(forResource: "JSONFile", ofType: "txt") {
             if let data = NSData(contentsOfFile: path) {
@@ -125,33 +153,21 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
 //    }
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-//        let vc = Detailed_ViewController()
         print("didTapInfoWindowOf")
         let model = marker.userData as! Model
-        
-//        vc.nType = model.type
-//        vc.nEvent = model.title
-//        vc.nlatlong = model.lat + "," + model.lon
-//        self.navigationController?.pushViewController(vc, animated: true)
-//        let index = NSIndexPath()
         print("index:\(self.index)")
+        let indexToScrollTo = IndexPath(row: 1, section: index)
+        self.collectionView.scrollToItem(at: indexToScrollTo, at: .left, animated: false)
     }
-    
-    
     func setMarkersOnMap(_ lat: Double, lng: Double , title: String , snipet: String, item:Model) {
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2DMake(lat, lng)
-//        let vancouver = CLLocationCoordinate2D(latitude: lat, longitude: lat)
-//
-//        let vancouverCam = GMSCameraUpdate.setTarget(vancouver)
-//        map_View?.animate(with: vancouverCam)
         map_View?.camera = GMSCameraPosition.camera(withLatitude:lat, longitude:lng, zoom:11)
-            marker.title = title
-            marker.map = map_View
-            marker.icon = UIImage(named: "home")
-            marker.userData = item
-        }
-    
+        marker.title = title
+        marker.map = map_View
+        marker.icon = UIImage(named: "home")
+        marker.userData = item
+}
     func drawCircle(_ position: CLLocationCoordinate2D) {
 
         let circle = GMSCircle(position: position, radius: 2000)
