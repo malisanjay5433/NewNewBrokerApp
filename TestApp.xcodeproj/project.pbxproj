@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3D5A75BB1DCB7E3D004C0E37 /* NoBroker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoBroker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D5A75BB1DCB7E3D004C0E37 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D5A75BE1DCB7E3D004C0E37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D5A75C01DCB7E3D004C0E37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3D5A75C31DCB7E3D004C0E37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -49,7 +49,7 @@
 		3D5A75B21DCB7E3D004C0E37 = {
 			isa = PBXGroup;
 			children = (
-				3D5A75BD1DCB7E3D004C0E37 /* NoBroker */,
+				3D5A75BD1DCB7E3D004C0E37 /* TestApp */,
 				3D5A75BC1DCB7E3D004C0E37 /* Products */,
 				FFD3C2C47AA6F087941A2203 /* Pods */,
 				611F81A9020761BA424AA35E /* Frameworks */,
@@ -59,12 +59,12 @@
 		3D5A75BC1DCB7E3D004C0E37 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3D5A75BB1DCB7E3D004C0E37 /* NoBroker.app */,
+				3D5A75BB1DCB7E3D004C0E37 /* TestApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3D5A75BD1DCB7E3D004C0E37 /* NoBroker */ = {
+		3D5A75BD1DCB7E3D004C0E37 /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
 				3D5A75D21DCBB569004C0E37 /* JSONFile.txt */,
@@ -77,6 +77,7 @@
 				3D5A75CA1DCB7E3D004C0E37 /* Info.plist */,
 				3D5A75D01DCBA5A9004C0E37 /* Property_Cell.swift */,
 			);
+			name = TestApp;
 			path = NoBroker;
 			sourceTree = "<group>";
 		};
@@ -100,9 +101,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3D5A75BA1DCB7E3D004C0E37 /* NoBroker */ = {
+		3D5A75BA1DCB7E3D004C0E37 /* TestApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3D5A75CD1DCB7E3D004C0E37 /* Build configuration list for PBXNativeTarget "NoBroker" */;
+			buildConfigurationList = 3D5A75CD1DCB7E3D004C0E37 /* Build configuration list for PBXNativeTarget "TestApp" */;
 			buildPhases = (
 				21BAFCE3FFC34CD5FC349AE9 /* [CP] Check Pods Manifest.lock */,
 				3D5A75B71DCB7E3D004C0E37 /* Sources */,
@@ -115,9 +116,9 @@
 			);
 			dependencies = (
 			);
-			name = NoBroker;
+			name = TestApp;
 			productName = NoBroker;
-			productReference = 3D5A75BB1DCB7E3D004C0E37 /* NoBroker.app */;
+			productReference = 3D5A75BB1DCB7E3D004C0E37 /* TestApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -137,7 +138,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3D5A75B61DCB7E3D004C0E37 /* Build configuration list for PBXProject "NoBroker" */;
+			buildConfigurationList = 3D5A75B61DCB7E3D004C0E37 /* Build configuration list for PBXProject "TestApp" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -150,7 +151,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3D5A75BA1DCB7E3D004C0E37 /* NoBroker */,
+				3D5A75BA1DCB7E3D004C0E37 /* TestApp */,
 			);
 		};
 /* End PBXProject section */
@@ -375,7 +376,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3D5A75B61DCB7E3D004C0E37 /* Build configuration list for PBXProject "NoBroker" */ = {
+		3D5A75B61DCB7E3D004C0E37 /* Build configuration list for PBXProject "TestApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3D5A75CB1DCB7E3D004C0E37 /* Debug */,
@@ -384,7 +385,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3D5A75CD1DCB7E3D004C0E37 /* Build configuration list for PBXNativeTarget "NoBroker" */ = {
+		3D5A75CD1DCB7E3D004C0E37 /* Build configuration list for PBXNativeTarget "TestApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3D5A75CE1DCB7E3D004C0E37 /* Debug */,

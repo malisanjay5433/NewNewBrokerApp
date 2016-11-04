@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import GoogleMaps
+import GoogleMaps
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,6 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 //        GMSServices.provideAPIKey("AIzaSyAu4xCJrTVAiqXzWJwEcsktmKGNOq8i5Eo")
+        GMSServices.provideAPIKey("AIzaSyAoccvPG7kCn0jVYdtclP4pVSe4lzQrZdA")
+        let navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.barTintColor = UIColor.rgb(red: 252,green: 55,blue: 82)
+
+
+        
         return true
     }
 

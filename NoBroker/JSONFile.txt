@@ -1,64 +1,100 @@
 {
     "data":[
     {
-        "type":"ex",
+        "type":"1BHK",
         "coordinate":"19.0760,73.8777",
-        "title":"Awesome Event 1"
+        "title":"Indiabulls",
+        "locality":"Lower parel",
+        "image":"1.png"
     },
     {
-        "type":"pe",
+        "type":"3BHK",
         "coordinate":"19.0760,73.2777",
-        "title":"Awesome Event 2"
+        "title":"One BKC",
+        "locality":"BKC",
+        "image":"building.png"
+
     },
     {
-        "type":"ev",
-        "coordinate":"19.0760,72.4777",
-        "title":"Awesome Event 3"
+        "type":"4BHK",
+        "coordinate":"19.0760,73.4777",
+        "title":"Times Square",
+        "locality":"Andheri",
+        "image":"3.png"
+
     },
     {
-        "type":"ex",
-        "coordinate":"19.0760,72.3777",
-        "title":"Awesome Event 4"
+        "type":"4BHK",
+        "coordinate":"19.0760,73.3777",
+        "title":"Times Tower",
+        "locality":"Lower Parel",
+        "image":"4.png"
+
     },
     {
-        "type":"pe",
-        "coordinate":"19.0760,72.1777",
-        "title":"Awesome Event 5"
+        "type":"1BHK",
+        "coordinate":"19.0760,73.1777",
+        "title":"The Capital",
+        "locality":"BKC",
+        "image":"5.png"
+
+
     },
     {
-        "type":"ev",
-        "coordinate":"19.0760,72.4777",
-        "title":"Awesome Event 5"
+        "type":"7BHK",
+        "coordinate":"19.0760,73.4777",
+        "title":"ABC",
+        "locality":"Worli",
+        "image":"6.png"
+
     },
     {
-        "type":"ex",
-        "coordinate":"19.0760,72.5777",
-        "title":"Awesome Event 6"
+        "type":"3BHK",
+        "coordinate":"19.0760,73.5777",
+        "title":"Hallmark",
+        "locality":"BKC",
+        "image":"7.png"
+
     },
     {
-        "type":"pe",
-        "coordinate":"19.0760,72.9777",
-        "title":"Awesome Event 7"
+        "type":"4BHK",
+        "coordinate":"19.0760,73.9777",
+        "title":"Awesome",
+        "locality":"Chembur",
+        "image":"8.png"
+
     },
     {
-        "type":"ev",
+        "type":"1BHK",
         "coordinate":"19.1760,72.8777",
-        "title":"Awesome Event 8"
+        "title":"SunView",
+        "locality":"Tilak Nagar",
+        "image":"9.png"
+
     },
     {
-        "type":"ex",
+        "type":"9BHK",
         "coordinate":"19.4760,72.8777",
-        "title":"Awesome Event 9"
+        "title":"Lavendar",
+        "locality":"Ghaptkoper",
+        "image":"10.png"
+
     },
     {
-        "type":"pe",
-        "coordinate":"19.5760,72.8777",
-        "title":"Awesome Event 10"
+        "type":"3BHK",
+        "coordinate":"19.5760,74.9777",
+        "title":"iMax",
+        "locality":"Wadala",
+        "image":"11.png"
+
     },
     {
-        "type":"ev",
-        "coordinate":"19.3760,72.8777",
-        "title":"Awesome Event 11"
+        "type":"10BHK",
+        "coordinate":"19.3760,74.8777",
+        "title":"KBCKBC",
+        "locality":"BKC",
+        "image":"building.png"
+
     }
-    ]
+  ]
 }

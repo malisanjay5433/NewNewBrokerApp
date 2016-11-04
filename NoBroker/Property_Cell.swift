@@ -10,6 +10,8 @@ import UIKit
 
 class Property_Cell: UICollectionViewCell {
     
-    
-    
+    @IBOutlet var property_Image:UIImageView?
+    @IBOutlet var property_Name:UILabel?
+    @IBOutlet var locality:UILabel?
+    @IBOutlet var bhk:UILabel?
 }
