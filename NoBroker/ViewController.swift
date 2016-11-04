@@ -17,14 +17,16 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
      @IBOutlet var map_View:GMSMapView?
     @IBOutlet var back:UIView?
     @IBOutlet var collection_back:UIView?
+    var selectedIndexPath: NSIndexPath? = nil
     var titleLabel = UILabel()
     var index = 0
+    var model:Model!
     override func viewDidLoad() {
         super.viewDidLoad()
         readJSON()
         
         titleLabel = UILabel(frame: CGRect(x:0, y:0, width:view.frame.width - 32, height:view.frame.height))
-        titleLabel.text = "Mumbai"
+        titleLabel.text = "%NoBroker"
         titleLabel.textColor = UIColor.white
         titleLabel.font = UIFont.systemFont(ofSize: 18)
         navigationItem.titleView = titleLabel
@@ -43,26 +45,6 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-//    
-//    var map_View: GMSMapView = {
-//        let view = GMSMapView()
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        return view
-//    }()
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        var visibleRect = CGRect()
-        
-        visibleRect.origin = collectionView.contentOffset
-        visibleRect.size = collectionView.bounds.size
-        
-        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
-        
-        let visibleIndexPath: IndexPath = collectionView.indexPathForItem(at: visiblePoint)!
-        
-        print(visibleIndexPath)
-    }
-
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
@@ -75,6 +57,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Property_Cell
         let data = m[indexPath.row]
+        let indexToScroll = m[(indexPath as NSIndexPath).row]
         cell.property_Name?.text = data.type
         cell.locality?.text = data.title
         cell.bhk?.text = data.locality
@@ -96,22 +79,9 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         self.setMarkersOnMap((data.lat as NSString).doubleValue, lng: (data.lon as NSString).doubleValue, title: data.title, snipet:"", item: data)
         let zoomCamera = GMSCameraUpdate.zoomIn()
         map_View?.animate(with: zoomCamera)
-    }
+ }
     
-    var onceOnly = false
-    internal func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if !onceOnly {
-            //set the row and section you need.
-            let indexToScrollTo = IndexPath(row: 1, section: indexPath.section)
-            self.collectionView.scrollToItem(at: indexToScrollTo, at: .left, animated: false)
-            onceOnly = true
-        }
-    }
-    
-    
-    
-    
-        func setupCollectionView(){
+    func setupCollectionView(){
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         
@@ -119,10 +89,17 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         print("didTap")
-//        let visibleIndexPath: IndexPath = collectionView.indexPath(for: Property_Cell.self)
+        var visibleRect = CGRect()
+        visibleRect.origin = collectionView.contentOffset
+        visibleRect.size = collectionView.bounds.size
+        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+        let visibleIndexPath: IndexPath = collectionView.indexPathForItem(at: visiblePoint)!
+        print("visibleIndexPath:\(visibleIndexPath)")
         self.collectionView.reloadData()
         self.collectionView.setContentOffset(CGPoint(x: 0, y: -self.collectionView.contentInset.top), animated:true)
-        return true
+        
+        
+          return true
     }
     func readJSON(){
         if let path : String = Bundle.main.path(forResource: "JSONFile", ofType: "txt") {
@@ -156,16 +133,17 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         print("didTapInfoWindowOf")
         let model = marker.userData as! Model
         print("index:\(self.index)")
-        let indexToScrollTo = IndexPath(row: 1, section: index)
-        self.collectionView.scrollToItem(at: indexToScrollTo, at: .left, animated: false)
-    }
+//        let indexToScrollTo = IndexPath(row: 1, section: index)
+//        self.collectionView.scrollToItem(at: indexToScrollTo, at: .left, animated: false)
+       
+}
     func setMarkersOnMap(_ lat: Double, lng: Double , title: String , snipet: String, item:Model) {
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2DMake(lat, lng)
         map_View?.camera = GMSCameraPosition.camera(withLatitude:lat, longitude:lng, zoom:11)
         marker.title = title
         marker.map = map_View
-        marker.icon = UIImage(named: "home")
+        marker.icon = UIImage(named: "sell_property_filled")
         marker.userData = item
 }
     func drawCircle(_ position: CLLocationCoordinate2D) {

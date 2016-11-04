@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3D5A75BB1DCB7E3D004C0E37 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D5A75BB1DCB7E3D004C0E37 /* NoBroker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoBroker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D5A75BE1DCB7E3D004C0E37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D5A75C01DCB7E3D004C0E37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3D5A75C31DCB7E3D004C0E37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -49,7 +49,7 @@
 		3D5A75B21DCB7E3D004C0E37 = {
 			isa = PBXGroup;
 			children = (
-				3D5A75BD1DCB7E3D004C0E37 /* TestApp */,
+				3D5A75BD1DCB7E3D004C0E37 /* NoBroker */,
 				3D5A75BC1DCB7E3D004C0E37 /* Products */,
 				FFD3C2C47AA6F087941A2203 /* Pods */,
 				611F81A9020761BA424AA35E /* Frameworks */,
@@ -59,26 +59,49 @@
 		3D5A75BC1DCB7E3D004C0E37 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3D5A75BB1DCB7E3D004C0E37 /* TestApp.app */,
+				3D5A75BB1DCB7E3D004C0E37 /* NoBroker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3D5A75BD1DCB7E3D004C0E37 /* TestApp */ = {
+		3D5A75BD1DCB7E3D004C0E37 /* NoBroker */ = {
+			isa = PBXGroup;
+			children = (
+				3D5A75DC1DCCF8EA004C0E37 /* View */,
+				3D5A75DB1DCCF8DD004C0E37 /* Controller */,
+				3D5A75DA1DCCF8D4004C0E37 /* Model */,
+				3D5A75BE1DCB7E3D004C0E37 /* AppDelegate.swift */,
+				3D5A75C51DCB7E3D004C0E37 /* Assets.xcassets */,
+				3D5A75CA1DCB7E3D004C0E37 /* Info.plist */,
+				3D5A75D01DCBA5A9004C0E37 /* Property_Cell.swift */,
+			);
+			path = NoBroker;
+			sourceTree = "<group>";
+		};
+		3D5A75DA1DCCF8D4004C0E37 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				3D5A75D21DCBB569004C0E37 /* JSONFile.txt */,
 				3D5A75D31DCBB569004C0E37 /* Model.swift */,
-				3D5A75BE1DCB7E3D004C0E37 /* AppDelegate.swift */,
-				3D5A75C01DCB7E3D004C0E37 /* ViewController.swift */,
-				3D5A75C21DCB7E3D004C0E37 /* Main.storyboard */,
-				3D5A75C51DCB7E3D004C0E37 /* Assets.xcassets */,
-				3D5A75C71DCB7E3D004C0E37 /* LaunchScreen.storyboard */,
-				3D5A75CA1DCB7E3D004C0E37 /* Info.plist */,
-				3D5A75D01DCBA5A9004C0E37 /* Property_Cell.swift */,
 			);
-			name = TestApp;
-			path = NoBroker;
+			name = Model;
+			sourceTree = "<group>";
+		};
+		3D5A75DB1DCCF8DD004C0E37 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3D5A75C01DCB7E3D004C0E37 /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		3D5A75DC1DCCF8EA004C0E37 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3D5A75C21DCB7E3D004C0E37 /* Main.storyboard */,
+				3D5A75C71DCB7E3D004C0E37 /* LaunchScreen.storyboard */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		611F81A9020761BA424AA35E /* Frameworks */ = {
@@ -101,9 +124,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3D5A75BA1DCB7E3D004C0E37 /* TestApp */ = {
+		3D5A75BA1DCB7E3D004C0E37 /* NoBroker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3D5A75CD1DCB7E3D004C0E37 /* Build configuration list for PBXNativeTarget "TestApp" */;
+			buildConfigurationList = 3D5A75CD1DCB7E3D004C0E37 /* Build configuration list for PBXNativeTarget "NoBroker" */;
 			buildPhases = (
 				21BAFCE3FFC34CD5FC349AE9 /* [CP] Check Pods Manifest.lock */,
 				3D5A75B71DCB7E3D004C0E37 /* Sources */,
@@ -116,9 +139,9 @@
 			);
 			dependencies = (
 			);
-			name = TestApp;
+			name = NoBroker;
 			productName = NoBroker;
-			productReference = 3D5A75BB1DCB7E3D004C0E37 /* TestApp.app */;
+			productReference = 3D5A75BB1DCB7E3D004C0E37 /* NoBroker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -138,7 +161,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3D5A75B61DCB7E3D004C0E37 /* Build configuration list for PBXProject "TestApp" */;
+			buildConfigurationList = 3D5A75B61DCB7E3D004C0E37 /* Build configuration list for PBXProject "NoBroker" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -151,7 +174,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3D5A75BA1DCB7E3D004C0E37 /* TestApp */,
+				3D5A75BA1DCB7E3D004C0E37 /* NoBroker */,
 			);
 		};
 /* End PBXProject section */
@@ -376,7 +399,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3D5A75B61DCB7E3D004C0E37 /* Build configuration list for PBXProject "TestApp" */ = {
+		3D5A75B61DCB7E3D004C0E37 /* Build configuration list for PBXProject "NoBroker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3D5A75CB1DCB7E3D004C0E37 /* Debug */,
@@ -385,7 +408,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3D5A75CD1DCB7E3D004C0E37 /* Build configuration list for PBXNativeTarget "TestApp" */ = {
+		3D5A75CD1DCB7E3D004C0E37 /* Build configuration list for PBXNativeTarget "NoBroker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3D5A75CE1DCB7E3D004C0E37 /* Debug */,
