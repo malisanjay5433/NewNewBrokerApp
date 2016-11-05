@@ -33,13 +33,13 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        let c = GMSCameraPosition.camera(withLatitude:19.0760, longitude:73.1777, zoom:10)
+        let c = GMSCameraPosition.camera(withLatitude:19.0760, longitude:73.1777, zoom:5)
         map_View = GMSMapView.map(withFrame: CGRect(x:0,y:0,width:self.view.bounds.width,height:self.view.bounds.height - 150), camera:c)
         back?.addSubview(map_View!)
         map_View?.isMyLocationEnabled = true
         map_View?.settings.myLocationButton = true
         map_View?.delegate = self
-      
+       get()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -57,7 +57,6 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Property_Cell
         let data = m[indexPath.row]
-        let indexToScroll = m[(indexPath as NSIndexPath).row]
         cell.property_Name?.text = data.type
         cell.locality?.text = data.title
         cell.bhk?.text = data.locality
@@ -89,17 +88,12 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         print("didTap")
-        var visibleRect = CGRect()
-        visibleRect.origin = collectionView.contentOffset
-        visibleRect.size = collectionView.bounds.size
-        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
-        let visibleIndexPath: IndexPath = collectionView.indexPathForItem(at: visiblePoint)!
-        print("visibleIndexPath:\(visibleIndexPath)")
-        self.collectionView.reloadData()
+        let mod = marker.userData as! Model
+        print("index:\(mod)")
+       
         self.collectionView.setContentOffset(CGPoint(x: 0, y: -self.collectionView.contentInset.top), animated:true)
-        
-        
-          return true
+         self.collectionView.reloadData()
+        return true
     }
     func readJSON(){
         if let path : String = Bundle.main.path(forResource: "JSONFile", ofType: "txt") {
@@ -115,7 +109,9 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                     let lon = coordinate[1]
                     let loc = i ["locality"].string!
                     let image = i["image"].string
-                    let  response = Model(type:type!,title:title!,lat:lat,lon:lon,locality:loc,image:image!)
+                    let id = i["id"].int
+                    let  response = Model(type:type!,title:title!,lat:lat,lon:lon,locality:loc,image:image!,id:id)
+                    model = response
                     self.m.append(response)
                     
                 }
@@ -123,28 +119,26 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             
         }
     }
-//    func get(){
-//        let data:Model?
-//        self.setMarkersOnMap((data?.lat as NSString).doubleValue, lng: (data?.lon as NSString).doubleValue, title: data?.title, snipet:"", item:"")
-//     
-//    }
+    func get(){
+        self.setMarkersOnMap((model.lat as NSString).doubleValue, lng: (model!.lon as NSString).doubleValue, title: model!.title, snipet:"", item:model!)
+     
+    }
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         print("didTapInfoWindowOf")
         let model = marker.userData as! Model
-        print("index:\(self.index)")
-//        let indexToScrollTo = IndexPath(row: 1, section: index)
-//        self.collectionView.scrollToItem(at: indexToScrollTo, at: .left, animated: false)
+        print("index:\(self.model)")
        
 }
     func setMarkersOnMap(_ lat: Double, lng: Double , title: String , snipet: String, item:Model) {
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2DMake(lat, lng)
-        map_View?.camera = GMSCameraPosition.camera(withLatitude:lat, longitude:lng, zoom:11)
+        map_View?.camera = GMSCameraPosition.camera(withLatitude:lat, longitude:lng, zoom:9)
         marker.title = title
         marker.map = map_View
         marker.icon = UIImage(named: "sell_property_filled")
         marker.userData = item
+        
 }
     func drawCircle(_ position: CLLocationCoordinate2D) {
 

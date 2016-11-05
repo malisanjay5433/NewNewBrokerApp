@@ -16,14 +16,16 @@ class Model: NSObject {
     let lon:String!
     let locality:String!
     let image:String!
+    let id:Int!
     
-    init(type:String!,title:String!,lat:String!,lon:String!,locality:String!,image:String!) {
+    init(type:String!,title:String!,lat:String!,lon:String!,locality:String!,image:String!,id:Int!) {
         self.type = type!
         self.title = title!
         self.lat = lat!
         self.lon = lon!
         self.locality = locality!
         self.image = image!
+        self.id = id!
     }
     
 }
